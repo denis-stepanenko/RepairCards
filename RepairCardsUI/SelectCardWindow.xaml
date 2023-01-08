@@ -1,0 +1,54 @@
+﻿<Window x:Class="RepairCardsUI.SelectCardWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+        xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+        xmlns:mahapps="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+        mc:Ignorable="d"
+        Title="Выбор карты ремонта" Height="450" Width="1000" 
+        WindowStartupLocation="CenterScreen">
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="200"/>
+            </Grid.ColumnDefinitions>
+
+            <WrapPanel Grid.Row="0" HorizontalAlignment="Stretch" VerticalAlignment="Top" Height="30" Background="#e1e1e1">
+                <Button x:Name="refreshButton" Click="RefreshButton_Click">Обновить</Button>
+            </WrapPanel>
+
+            <telerik:RadGridView Grid.Row="0" x:Name="cardsRadGridView" MouseDoubleClick="cardsRadGridView_MouseDoubleClick">
+                <telerik:RadGridView.Columns>
+                    <telerik:GridViewDataColumn Header="Номер" DataMemberBinding="{Binding Number}" Width="150"/>
+                    <telerik:GridViewDataColumn Header="Направление деятельности" DataMemberBinding="{Binding Direction}" Width="150"/>
+                    <telerik:GridViewDataColumn Header="Шифр" DataMemberBinding="{Binding Cipher}" Width="150"/>
+                    <telerik:GridViewDataColumn Header="Тип ремонта" DataMemberBinding="{Binding RepairType.Name}" Width="150"/>
+                    <telerik:GridViewDataColumn Header="Цех" DataMemberBinding="{Binding Department}" Width="80"/>
+                    <telerik:GridViewDataColumn Header="Откуда поступил" DataMemberBinding="{Binding Source}" Width="150"/>
+                    <telerik:GridViewDataColumn Header="Дата поступления" DataMemberBinding="{Binding Date}" DataFormatString="{} {0:dd/MM/yyyy}" Width="150"/>
+                    <telerik:GridViewDataColumn Header="Номер накладной" DataMemberBinding="{Binding InvoiceNumber}" Width="150"/>
+                    <telerik:GridViewDataColumn Header="Заказ" DataMemberBinding="{Binding Order}" Width="150"/>
+                    <telerik:GridViewDataColumn Header="Заказ производства" DataMemberBinding="{Binding Stage}" Width="150"/>
+                    <telerik:GridViewDataColumn Header="Заводской номер" DataMemberBinding="{Binding FactoryNumber}" Width="150"/>
+                    <telerik:GridViewDataColumn Header="Направление деятельности" DataMemberBinding="{Binding Direction}" Width="150"/>
+                    <telerik:GridViewDataColumn Header="Шифр" DataMemberBinding="{Binding Cipher}" Width="150"/>
+                    <telerik:GridViewDataColumn Header="Заказ клиента" DataMemberBinding="{Binding ClientOrder}" Width="150"/>
+                    <telerik:GridViewDataColumn Header="Децимальный номер" DataMemberBinding="{Binding ProductCode}" Width="150"/>
+                    <telerik:GridViewDataColumn Header="Наименование" DataMemberBinding="{Binding ProductName}" Width="150"/>
+                    <telerik:GridViewDataColumn Header="Основание ремонта" DataMemberBinding="{Binding ReasonForRepair}" Width="150"/>
+                </telerik:RadGridView.Columns>
+            </telerik:RadGridView>
+
+            <StackPanel Grid.Column="1" Grid.Row="0">
+                <Button x:Name="acceptButton" Click="AcceptButton_Click">OK</Button>
+            </StackPanel>
+
+        </Grid>
+
+</Window>

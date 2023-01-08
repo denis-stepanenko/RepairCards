@@ -1,0 +1,40 @@
+﻿<Window x:Class="RepairCardsUI.ExecutorWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:mahapps="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+        mc:Ignorable="d"
+        Title="Исполнитель" Height="450" Width="500" 
+        WindowStartupLocation="CenterScreen">
+
+        <Grid VerticalAlignment="Top">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <TextBlock Grid.Row="0">Наименование:</TextBlock>
+            <TextBlock Grid.Row="1">Цех:</TextBlock>
+            <TextBox Grid.Row="0" Grid.Column="1" x:Name="nameTextBox" MaxLength="200"/>
+            <ComboBox Grid.Row="1" Grid.Column="1" x:Name="departmentComboBox">
+                <ComboBoxItem>4</ComboBoxItem>
+                <ComboBoxItem>5</ComboBoxItem>
+                <ComboBoxItem>6</ComboBoxItem>
+                <ComboBoxItem>13</ComboBoxItem>
+                <ComboBoxItem>17</ComboBoxItem>
+                <ComboBoxItem>80</ComboBoxItem>
+                <ComboBoxItem>82</ComboBoxItem>
+            </ComboBox>
+
+            <Button Grid.Row="2" Grid.ColumnSpan="2" HorizontalAlignment="Right" VerticalAlignment="Top" x:Name="acceptButton" Click="AcceptButton_Click">ОК</Button>
+        </Grid>
+    
+</Window>

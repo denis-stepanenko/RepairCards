@@ -1,0 +1,70 @@
+﻿<Page x:Class="RepairCardsUI.Pages.FactCardOperationsPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+      xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800">
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            
+            <WrapPanel>
+                <Button x:Name="addButton" Click="addButton_Click">Добавить</Button>
+                <Button x:Name="addFromPlanButton" Click="AddFromPlanButton_Click">Добавить из планируемых</Button>
+                <Button x:Name="addFromTemplateButton" Click="AddFromTemplateButton_Click">Добавить из шаблона</Button>
+                <Button x:Name="addFromAnotherCardButton" Click="addFromAnotherCardButton_Click">Добавить из другой карты</Button>
+                <Button x:Name="editButton" Click="EditButton_Click">Изменить</Button>
+                <Button x:Name="deleteButton" Click="deleteButton_Click">Удалить</Button>
+                <Button x:Name="refreshButton" Click="refreshButton_Click">Обновить</Button>
+                <Button x:Name="confirmButton" Click="confirmButton_Click">Утвердить</Button>
+                <Button x:Name="unconfirmButton" Click="unconfirmButton_Click">Снять утверждение</Button>
+            </WrapPanel>
+
+            <Expander Grid.Row="1" Header="Групповое изменение">
+            <WrapPanel>
+                <WrapPanel>
+                    <TextBlock VerticalAlignment="Center">Исполнитель</TextBlock>
+                    <ComboBox x:Name="executorsComboBox" Width="200" DisplayMemberPath="Name" IsEditable="True" IsTextSearchEnabled="True"/>
+                    <Button x:Name="changeExecutorButton" Click="changeExecutorButton_Click">Изменить</Button>
+                </WrapPanel>
+
+                <WrapPanel>
+                    <TextBlock VerticalAlignment="Center">Дата</TextBlock>
+                    <DatePicker x:Name="dateDateTimePicker" Width="200"/>
+                    <Button x:Name="changeDateButton" Click="changeDateButton_Click">Изменить</Button>
+                </WrapPanel>
+            </WrapPanel>
+            </Expander>
+
+            <telerik:RadGridView x:Name="operationsRadGridView" 
+                                 Grid.Row="2" 
+                                 SearchPanelBackground="Transparent"
+                                 MouseDoubleClick="operationsRadGridView_MouseDoubleClick">
+                <telerik:RadGridView.Columns>
+                    <telerik:GridViewDataColumn Header="Цех" DataMemberBinding="{Binding Department}" Width="80"/>
+                    <telerik:GridViewDataColumn Header="Утвердил" DataMemberBinding="{Binding ConfirmUserName}" Width="70"/>
+                    <telerik:GridViewDataColumn Header="Код" DataMemberBinding="{Binding Code}" Width="80"/>
+                    <telerik:GridViewDataColumn Header="Наименование" DataMemberBinding="{Binding Name}" Width="300"/>
+                    <telerik:GridViewDataColumn Header="Количество" DataMemberBinding="{Binding Count}" Width="110"/>
+                    <telerik:GridViewDataColumn Header="Единица измерения" DataMemberBinding="{Binding UnitName}" Width="160"/>
+                    <telerik:GridViewDataColumn Header="Н/Ч на единицу" DataMemberBinding="{Binding Labor}" Width="130"/>
+                    <telerik:GridViewDataColumn Header="Н/Ч всего" DataMemberBinding="{Binding LaborAll}" Width="120"/>
+                    <telerik:GridViewDataColumn Header="Дата" DataMemberBinding="{Binding Date}" DataFormatString="{} {0:dd/MM/yyyy}" Width="150"/>
+                    <telerik:GridViewDataColumn Header="Исполнитель" DataMemberBinding="{Binding Executor.Name}" Width="150"/>
+                    <telerik:GridViewDataColumn Header="Группа" DataMemberBinding="{Binding GroupName}" Width="200"/>
+                    <telerik:GridViewDataColumn Header="Примечание" DataMemberBinding="{Binding Comment}" Width="80"/>
+                    <telerik:GridViewDataColumn Header="Наименование шаблона" DataMemberBinding="{Binding TemplateName}" Width="180"/>
+                </telerik:RadGridView.Columns>
+            </telerik:RadGridView>
+            
+        </Grid>
+        
+    
+</Page>

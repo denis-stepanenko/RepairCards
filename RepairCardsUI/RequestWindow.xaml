@@ -1,0 +1,133 @@
+﻿<Window x:Class="RepairCardsUI.RequestWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:mahapps="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+        xmlns:infrastructure="clr-namespace:RepairCardsUI.Infrastructure"
+        mc:Ignorable="d"
+        Title="Заявка" Height="800" Width="1000" 
+        WindowStartupLocation="CenterScreen">
+
+        <StackPanel>
+            <GroupBox Header="Заявка">
+                <Grid VerticalAlignment="Top">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="250"/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+
+                    <TextBlock Grid.Row="0">Карта:</TextBlock>
+                    <infrastructure:SelectControl Grid.Row="0"
+                                          Grid.Column="1"
+                                          x:Name="cardSelectControl" 
+                                          ShowClearButton="True" 
+                                          Click="CardSelectControl_Click"
+                                          Clear="CardSelectControl_Clear" Grid.ColumnSpan="2"/>
+
+                    <!--<TextBlock Grid.Row="1">Продукт:</TextBlock>
+                    <infrastructure:SelectControl x:Name="productSelectControl" 
+                                              Grid.Row="1" Grid.Column="1" 
+                                              Click="ProductSelectControl_Click"
+                                              Clear="ProductSelectControl_Clear"
+                                              ShowClearButton="True" Grid.ColumnSpan="2"/>-->
+                    
+                    <TextBlock Grid.Row="1">Продукт:</TextBlock>
+                    <TextBox Grid.Row="1" 
+                             Grid.Column="1"
+                             x:Name="productTextBox" 
+                             IsReadOnly="True"/>
+
+                    <TextBlock Grid.Row="2">Тип ремонта:</TextBlock>
+                    <ComboBox Grid.Row="2" Grid.Column="1" x:Name="repairTypeComboBox" Grid.ColumnSpan="2" IsEnabled="False">
+                        <ComboBoxItem>Капитальный</ComboBoxItem>
+                        <ComboBoxItem>Гарантийный</ComboBoxItem>
+                        <ComboBoxItem>Негарантийный</ComboBoxItem>
+                        <ComboBoxItem>После периодических испытаний</ComboBoxItem>
+                        <ComboBoxItem>После квалификационных испытаний</ComboBoxItem>
+                        <ComboBoxItem>После типовых испытаний</ComboBoxItem>
+                    </ComboBox>
+
+                    <TextBlock Grid.Row="3">Заводской номер:</TextBlock>
+                    <TextBox Grid.Row="3" Grid.Column="1" x:Name="factoryNumberTextBox" MaxLength="100" Grid.ColumnSpan="2" IsReadOnly="True"/>
+
+                    <TextBlock Grid.Row="4">6-значный заказ:</TextBlock>
+                    <TextBox Grid.Row="4" Grid.Column="1" x:Name="shortOrderTextBox" MaxLength="6" Grid.ColumnSpan="2"/>
+                   
+                </Grid>
+
+            </GroupBox>
+
+            <GroupBox x:Name="responseGroupBox" Header="СКБ">
+                <Grid VerticalAlignment="Top">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="250"/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+
+                    <TextBlock Grid.Row="0">Продукт:</TextBlock>
+                    <infrastructure:SelectControl x:Name="repairProductSelectControl" 
+                                              Grid.Row="0" Grid.Column="1" 
+                                              Click="RepairProductSelectControl_Click"
+                                              Clear="RepairProductSelectControl_Clear"
+                                              ShowClearButton="True" Grid.ColumnSpan="2"/>
+
+                    <TextBlock Grid.Row="1">Заказ:</TextBlock>
+                    <infrastructure:SelectControl x:Name="repairOrderSelectControl" 
+                                              Grid.Row="1" Grid.Column="1" 
+                                              Click="RepairOrderSelectControl_Click"
+                                              Clear="RepairOrderSelectControl_Clear"
+                                              ShowClearButton="True" Grid.ColumnSpan="2"/>
+
+                    
+                </Grid>
+
+            </GroupBox>
+
+            <GroupBox Header="СКИЭ">
+                <Grid VerticalAlignment="Top">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="250"/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock>Номер контракта:</TextBlock>
+                    <TextBox Grid.Column="1" x:Name="contractNumberTextBox" MaxLength="100" Grid.ColumnSpan="2" mahapps:TextBoxHelper.ClearTextButton="True"/>
+                </Grid>
+            </GroupBox>
+
+            <GroupBox Header="ПЭО">
+                <Grid VerticalAlignment="Top">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="250"/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock Grid.Row="2" Grid.Column="0">Проверено работником ПЭО:</TextBlock>
+                    <mahapps:ToggleSwitch Grid.Row="2" Grid.Column="1" 
+                                      OnLabel="Да" 
+                                      OffLabel="Нет" 
+                                      x:Name="constructorToggleSwitch"
+                                      IsCheckedChanged="ConstructorToggleSwitch_IsCheckedChanged" Grid.ColumnSpan="2"/>
+                </Grid>
+            </GroupBox>
+
+            <Button HorizontalAlignment="Right" VerticalAlignment="Top" x:Name="acceptButton" Click="AcceptButton_Click" Grid.Column="2">ОК</Button>
+
+        </StackPanel>
+
+
+</Window>

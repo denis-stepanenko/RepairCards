@@ -1,0 +1,61 @@
+﻿<Window x:Class="RepairCardsUI.OperationWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+        xmlns:mahapps="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+        mc:Ignorable="d"
+        Title="Операция" Height="650" Width="600" 
+        WindowStartupLocation="CenterScreen">
+
+    <StackPanel>
+        <TextBlock>Код:</TextBlock>
+
+        <DockPanel>
+            <Button DockPanel.Dock="Right" 
+                        x:Name="generateCode" 
+                        Click="GenerateCode_Click">Получить новый</Button>
+            <TextBox x:Name="codeTextBox" MaxLength="50"/>
+        </DockPanel>
+
+        <TextBlock>Наименование:</TextBlock>
+        <TextBox x:Name="nameTextBox" MaxLength="500"/>
+
+        <TextBlock>Трудоемкость:</TextBlock>
+        <mahapps:NumericUpDown Minimum="0" Value="0" HasDecimals="True" x:Name="laborNumericUpDown"/>
+
+        <TextBlock>Цена:</TextBlock>
+        <mahapps:NumericUpDown Minimum="0" Value="0" HasDecimals="True" x:Name="priceNumericUpDown"/>
+
+        <TextBlock>Единица измерения:</TextBlock>
+        <TextBox x:Name="unitNameTextBox"/>
+
+        <TextBlock>Группа:</TextBlock>
+        <TextBox x:Name="groupNameTextBox" MaxLength="500"/>
+
+        <TextBlock>Цех:</TextBlock>
+        <ComboBox x:Name="departmentComboBox">
+            <ComboBoxItem>4</ComboBoxItem>
+            <ComboBoxItem>5</ComboBoxItem>
+            <ComboBoxItem>6</ComboBoxItem>
+            <ComboBoxItem>13</ComboBoxItem>
+            <ComboBoxItem>17</ComboBoxItem>
+            <ComboBoxItem>80</ComboBoxItem>
+            <ComboBoxItem>82</ComboBoxItem>
+        </ComboBox>
+
+        <TextBlock>Описание:</TextBlock>
+        <TextBox x:Name="descriptionTextBox" 
+                 TextWrapping="Wrap" 
+                 AcceptsReturn="True" 
+                 Height="180" 
+                 VerticalScrollBarVisibility="Auto"
+                 MaxLength="400"/>
+
+        <CheckBox x:Name="isInactiveCheckBox">Операция больше не используется</CheckBox>
+
+        <Button HorizontalAlignment="Right" VerticalAlignment="Top" x:Name="acceptButton" Click="AcceptButton_Click">ОК</Button>
+    </StackPanel>
+
+</Window>

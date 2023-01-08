@@ -1,0 +1,123 @@
+﻿<Page x:Class="RepairCardsUI.Pages.CardPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+      xmlns:infrastructure="clr-namespace:RepairCardsUI.Infrastructure"
+      xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800">
+
+    <ScrollViewer>
+        <StackPanel>
+
+            <TextBlock>Статус:</TextBlock>
+            <ComboBox x:Name="cardStatusComboBox">
+                <ComboBoxItem>В работе</ComboBoxItem>
+                <ComboBoxItem>Завершена</ComboBoxItem>
+                <ComboBoxItem>Аннулирована</ComboBoxItem>
+                <ComboBoxItem>На обсчет</ComboBoxItem>
+                <ComboBoxItem>Обсчитана</ComboBoxItem>
+            </ComboBox>
+
+            <TextBlock>Демонтировано из:</TextBlock>
+            <infrastructure:SelectControl x:Name="parentCardSelectControl" 
+                                              Click="ParentCardSelectControl_Click"
+                                              Clear="ParentCardSelectControl_Clear"
+                                              ShowClearButton="True"/>
+
+            <TextBlock>Установлено в:</TextBlock>
+            <TextBox x:Name="parentCard2TextBox" IsReadOnly="True"/>
+
+            <TextBlock>Номер:</TextBlock>
+            <TextBox x:Name="numberTextBox" MaxLength="50"/>
+
+            <TextBlock>Тип ремонта:</TextBlock>
+            <ComboBox x:Name="repairTypeComboBox">
+                <ComboBoxItem>Капитальный</ComboBoxItem>
+                <ComboBoxItem>Гарантийный</ComboBoxItem>
+                <ComboBoxItem>Негарантийный</ComboBoxItem>
+                <ComboBoxItem>После периодических испытаний</ComboBoxItem>
+                <ComboBoxItem>После квалификационных испытаний</ComboBoxItem>
+                <ComboBoxItem>После типовых испытаний</ComboBoxItem>
+                <ComboBoxItem>Межцеховой</ComboBoxItem>
+                <ComboBoxItem>Межоперационный</ComboBoxItem>
+            </ComboBox>
+
+            <TextBlock>Цех:</TextBlock>
+            <ComboBox x:Name="departmentComboBox">
+                <ComboBoxItem>4</ComboBoxItem>
+                <ComboBoxItem>5</ComboBoxItem>
+                <ComboBoxItem>6</ComboBoxItem>
+                <ComboBoxItem>13</ComboBoxItem>
+                <ComboBoxItem>17</ComboBoxItem>
+                <ComboBoxItem>80</ComboBoxItem>
+                <ComboBoxItem>82</ComboBoxItem>
+            </ComboBox>
+
+            <TextBlock>Откуда поступил:</TextBlock>
+            <ComboBox x:Name="sourceComboBox">
+                <ComboBoxItem>4</ComboBoxItem>
+                <ComboBoxItem>5</ComboBoxItem>
+                <ComboBoxItem>6</ComboBoxItem>
+                <ComboBoxItem>13</ComboBoxItem>
+                <ComboBoxItem>17</ComboBoxItem>
+                <ComboBoxItem>80</ComboBoxItem>
+                <ComboBoxItem>82</ComboBoxItem>
+                <ComboBoxItem>716</ComboBoxItem>
+            </ComboBox>
+
+            <TextBlock>Дата поступления:</TextBlock>
+            <DatePicker SelectedDateFormat="Short" x:Name="dateDatePicker"/>
+
+            <TextBlock>Номер накладной:</TextBlock>
+            <TextBox x:Name="invoiceNumberTextBox" MaxLength="50"/>
+
+            <TextBlock>Продукт:</TextBlock>
+            <infrastructure:SelectControl x:Name="productSelectControl"  
+                                              Click="ProductSelectControl_Click"
+                                              Clear="ProductSelectControl_Clear"
+                                              ShowClearButton="True"/>
+
+            <TextBlock>Заказ:</TextBlock>
+            <infrastructure:SelectControl x:Name="orderSelectControl"
+                                              Click="OrderSelectControl_Click"
+                                              Clear="OrderSelectControl_Clear"
+                                              ShowClearButton="True"/>
+
+            <TextBlock>Заводской номер:</TextBlock>
+            <TextBox x:Name="factoryNumberTextBox" MaxLength="50"/>
+
+            <TextBlock>Заказ производства:</TextBlock>
+            <TextBox x:Name="stageTextBox" MaxLength="50"/>
+
+            <TextBlock>Основание ремонта:</TextBlock>
+            <TextBox x:Name="reasonForRepairTextBox" MaxLength="200"/>
+
+            <TextBlock>Номер акта:</TextBlock>
+            <TextBox x:Name="actNumberTextBox" MaxLength="50"/>
+
+            <TextBlock>Номер карты разрешения:</TextBlock>
+            <TextBox x:Name="permissionCardNumberTextBox" MaxLength="50"/>
+
+            <TextBlock>Утверждения ООИОТ:</TextBlock>
+            <CheckBox x:Name="isDepartment4ConfirmedCheckBox">4</CheckBox>
+            <CheckBox x:Name="isDepartment5ConfirmedCheckBox">5</CheckBox>
+            <CheckBox x:Name="isDepartment6ConfirmedCheckBox">6</CheckBox>
+            <CheckBox x:Name="isDepartment13ConfirmedCheckBox">13</CheckBox>
+            <CheckBox x:Name="isDepartment17ConfirmedCheckBox">17</CheckBox>
+            <CheckBox x:Name="isDepartment80ConfirmedCheckBox">80</CheckBox>
+            <CheckBox x:Name="isDepartment82ConfirmedCheckBox">82</CheckBox>
+
+            <WrapPanel HorizontalAlignment="Right" >
+                <Button x:Name="addRequestButton" Click="addRequestButton_Click">Создать заявку</Button>
+                <Button x:Name="saveButton" Click="saveButton_Click">Сохранить</Button>
+            </WrapPanel>
+
+            <CheckBox IsEnabled="False" x:Name="cardIsConfirmedAndProductCodesAreTheSameCheckBox">Заявка на карту утверждена ПЭО и децимальные номера в карте и заявке совпадают</CheckBox>
+
+        </StackPanel>
+    </ScrollViewer>
+
+</Page>

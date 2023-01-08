@@ -1,0 +1,66 @@
+﻿<Window x:Class="RepairCardsUI.FactCardOperationWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+        xmlns:mahapps="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+        xmlns:infrastructure="clr-namespace:RepairCardsUI.Infrastructure"
+        mc:Ignorable="d"
+        Title="Выполненная операция" Height="500" Width="500" 
+        WindowStartupLocation="CenterScreen">
+
+        <Grid VerticalAlignment="Top">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <TextBlock Grid.Row="0">Код:</TextBlock>
+            <TextBlock Grid.Row="1">Наименование:</TextBlock>
+            <TextBlock Grid.Row="2">Дата сдачи:</TextBlock>
+            <TextBlock Grid.Row="3">Исполнитель:</TextBlock>
+            <TextBlock Grid.Row="4">Трудоемкость:</TextBlock>
+            <TextBlock Grid.Row="5">Единица измерения:</TextBlock>
+            <TextBlock Grid.Row="6">Группа:</TextBlock>
+            <TextBlock Grid.Row="7">Цех:</TextBlock>
+            <TextBlock Grid.Row="8">Количество:</TextBlock>
+
+            <TextBlock Grid.Row="0" Grid.Column="1" x:Name="codeTextBlock"/>
+            <TextBlock Grid.Row="1" Grid.Column="1" x:Name="nameTextBlock"/>
+            <DatePicker Grid.Row="2" Grid.Column="1" x:Name="dateDatePicker"/>
+            <infrastructure:SelectControl Grid.Row="3" Grid.Column="1" x:Name="executorSelectControl" Click="ExecutorSelectControl_Click"/>
+            <TextBlock Grid.Row="4" Grid.Column="1" x:Name="laborTextBlock"/>
+            <TextBlock Grid.Row="5" Grid.Column="1" x:Name="unitNameTextBlock"/>
+            <TextBlock Grid.Row="6" Grid.Column="1" x:Name="groupNameTextBlock"/>
+            <TextBlock Grid.Row="7" Grid.Column="1" x:Name="departmentTextBlock"/>
+
+            <mahapps:NumericUpDown Grid.Row="8" Grid.Column="1" Minimum="1" x:Name="countIntegerUpDown"/>
+
+            <TextBlock Grid.Row="9">Примечание:</TextBlock>
+            <TextBox Grid.Row="9" Grid.Column="1" 
+                         x:Name="commentTextBox" 
+                         TextWrapping="Wrap" 
+                         AcceptsReturn="True" 
+                         Height="180" 
+                         VerticalScrollBarVisibility="Auto"
+                         MaxLength="400"/>
+            
+            <Button Grid.Row="10" Grid.ColumnSpan="2" HorizontalAlignment="Right" VerticalAlignment="Top" x:Name="editButton" Click="EditButton_Click">ОК</Button>
+        </Grid>
+
+</Window>

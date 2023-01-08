@@ -1,0 +1,47 @@
+﻿<Window x:Class="RepairCardsUI.RepairProductSelectProductEntriesWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+        xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+        xmlns:mahapps="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+        xmlns:infrastructure="clr-namespace:RepairCardsUI.Infrastructure"
+        mc:Ignorable="d"
+        Title="Добавление из состава" Height="450" Width="1000" 
+        WindowStartupLocation="CenterScreen">
+
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="200"/>
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <Grid Grid.Row="1">
+                <WrapPanel HorizontalAlignment="Stretch" VerticalAlignment="Top" Height="30" Background="#e1e1e1">
+                    <Button x:Name="refreshButton" Click="RefreshButton_Click">Обновить</Button>
+                </WrapPanel>
+
+                <telerik:RadGridView x:Name="itemsRadGridView">
+                    <telerik:RadGridView.Columns>
+                        <telerik:GridViewDataColumn Header="Код" DataMemberBinding="{Binding Code}" Width="200"/>
+                        <telerik:GridViewDataColumn Header="Наименование" DataMemberBinding="{Binding Name}" Width="300"/>
+                        <telerik:GridViewDataColumn Header="Количество" DataMemberBinding="{Binding Count}" Width="110"/>
+                        <telerik:GridViewDataColumn Header="Количество всего" DataMemberBinding="{Binding CountAll}" Width="110"/>
+                        <telerik:GridViewDataColumn Header="Сборка" DataMemberBinding="{Binding ParentCode}" Width="200"/>
+                        <telerik:GridViewDataColumn Header="Маршрут" DataMemberBinding="{Binding Route}" Width="130"/>
+                    </telerik:RadGridView.Columns>
+                </telerik:RadGridView>
+
+            </Grid>
+
+            <StackPanel Grid.Column="1" Grid.Row="1">
+                <Button x:Name="addButton" Click="AddButton_Click">ОК</Button>
+            </StackPanel>
+        </Grid>
+
+</Window>

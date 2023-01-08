@@ -1,0 +1,39 @@
+﻿<Window x:Class="RepairCardsUI.AuthorizationWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:mahapps="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
+        Height="600" Width="1000"
+        Title="Карты ремонта - Вход"
+        FocusManager.FocusedElement="{Binding ElementName=passwordPasswordBox}">
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+
+            <TextBox Grid.Row="0" x:Name="filterTextBox" TextChanged="FilterTextBox_TextChanged" 
+                 mahapps:TextBoxHelper.ClearTextButton="True" 
+                 mahapps:TextBoxHelper.Watermark="Введите ФИО для поиска"/>
+
+            <ListBox Grid.Row="1" x:Name="usersListBox" DisplayMemberPath="Name"/>
+
+            <DockPanel Grid.Row="2" LastChildFill="True">
+                <Button DockPanel.Dock="Right" 
+                        x:Name="loginButton" 
+                        Click="LoginButton_Click" 
+                        IsDefault="True">Войти</Button>
+                
+                <PasswordBox x:Name="passwordPasswordBox" MaxLength="20"
+                             mahapps:TextBoxHelper.Watermark="Введите пароль"
+                             InputLanguageManager.InputLanguage="en-US"/>
+            </DockPanel>
+        </Grid>
+    
+</Window>

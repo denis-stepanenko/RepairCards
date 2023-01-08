@@ -1,0 +1,38 @@
+﻿<Page x:Class="RepairCardsUI.Pages.CardDocumentsPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+      xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+      xmlns:infrastructure="clr-namespace:RepairCardsUI.Infrastructure"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800">
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <WrapPanel>
+                <Button x:Name="addButton" Click="AddButton_Click">Добавить</Button>
+                <Button x:Name="editButton" Click="OpenButton_Click">Изменить</Button>
+                <Button x:Name="deleteButton" Click="DeleteButton_Click">Удалить</Button>
+                <Button x:Name="refreshButton" Click="refreshButton_Click">Обновить</Button>
+            </WrapPanel>
+
+            <telerik:RadGridView Grid.Row="1" 
+                                 x:Name="documentsRadGridView"
+                                 SearchPanelBackground="Transparent"
+                                 MouseDoubleClick="documentsRadGridView_MouseDoubleClick">
+
+                <telerik:RadGridView.Columns>
+                    <telerik:GridViewDataColumn Header="Наименование" DataMemberBinding="{Binding Name}" Width="500"/>
+                </telerik:RadGridView.Columns>
+
+            </telerik:RadGridView>
+
+        </Grid>
+    
+</Page>

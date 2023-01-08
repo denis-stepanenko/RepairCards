@@ -1,0 +1,56 @@
+﻿<Window x:Class="RepairCardsUI.SelectMaterialFromAnotherCardWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+        xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+        xmlns:mahapps="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+        xmlns:infrastructure="clr-namespace:RepairCardsUI.Infrastructure"
+        mc:Ignorable="d"
+        Title="Выбор материала из другой карты" Height="450" Width="1000" 
+        WindowStartupLocation="CenterScreen">
+
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="200"/>
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <DockPanel Grid.ColumnSpan="2">
+                <Button x:Name="showButton" 
+                        Click="ShowButton_Click" 
+                        DockPanel.Dock="Right">Показать</Button>
+                <infrastructure:SelectControl x:Name="cardSelectControl" Click="cardSelectControl_Click"/>
+            </DockPanel>
+
+            <Grid Grid.Row="1">
+            <WrapPanel HorizontalAlignment="Stretch" VerticalAlignment="Top" Height="30" Background="#e1e1e1">
+                <Button x:Name="refreshButton" Click="RefreshButton_Click">Обновить</Button>
+            </WrapPanel>
+
+            <telerik:RadGridView x:Name="itemsRadGridView">
+                <telerik:RadGridView.Columns>
+                        <telerik:GridViewDataColumn Header="Код" DataMemberBinding="{Binding Code}" Width="200"/>
+                        <telerik:GridViewDataColumn Header="Наименование" DataMemberBinding="{Binding Name}" Width="300"/>
+                        <telerik:GridViewDataColumn Header="Количество" DataMemberBinding="{Binding Count}" Width="150"/>
+                        <telerik:GridViewDataColumn Header="Единица измерения" DataMemberBinding="{Binding Unit.Name}" Width="160"/>
+                        <telerik:GridViewDataColumn Header="Тип" DataMemberBinding="{Binding Type}" Width="130"/>
+                        <telerik:GridViewDataColumn Header="Размер" DataMemberBinding="{Binding Size}" Width="110"/>
+                        <telerik:GridViewDataColumn Header="Цех" DataMemberBinding="{Binding Department}" Width="110"/>
+                    </telerik:RadGridView.Columns>
+            </telerik:RadGridView>
+
+            </Grid>
+            
+            <StackPanel Grid.Column="1" Grid.Row="1">
+                <Button x:Name="addButton" Click="AddButton_Click">ОК</Button>
+            </StackPanel>
+        </Grid>
+
+</Window>

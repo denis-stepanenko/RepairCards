@@ -1,0 +1,58 @@
+﻿<Page x:Class="RepairCardsUI.Pages.OperationsPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+      xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+      xmlns:infrastructure="clr-namespace:RepairCardsUI.Infrastructure"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800">
+    <Page.Resources>
+        <infrastructure:RemoveNewLineConverter x:Key="RemoveNewLineConverter"/>
+    </Page.Resources>
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <WrapPanel>
+                <Button x:Name="addButton" Click="addButton_Click">Добавить</Button>
+                <Button x:Name="editButton" Click="EditButton_Click">Изменить</Button>
+                <Button x:Name="deleteButton" Click="deleteButton_Click">Удалить</Button>
+                <Button x:Name="refreshButton" Click="refreshButton_Click">Обновить</Button>
+            </WrapPanel>
+
+            <telerik:RadGridView Grid.Row="1" 
+                                 x:Name="operationsRadGridView"
+                                 SearchPanelBackground="Transparent"
+                                 MouseDoubleClick="operationsRadGridView_MouseDoubleClick">
+
+                <telerik:RadGridView.Columns>
+                    <telerik:GridViewDataColumn Header="Цех" DataMemberBinding="{Binding Department}" Width="80"/>
+                    <telerik:GridViewDataColumn Header="Код" DataMemberBinding="{Binding Code}" Width="80"/>
+                    <telerik:GridViewDataColumn Header="Наименование" DataMemberBinding="{Binding Name}" Width="600"/>
+                    <telerik:GridViewDataColumn Header="Трудоемкость" DataMemberBinding="{Binding Labor}" Width="150"/>
+                    <telerik:GridViewDataColumn Header="Цена" DataMemberBinding="{Binding Price}" Width="150"/>
+                    <telerik:GridViewDataColumn Header="Единица измерения" DataMemberBinding="{Binding UnitName}" Width="180"/>
+                    <telerik:GridViewDataColumn Header="Группа" DataMemberBinding="{Binding GroupName}" Width="200"/>
+                    <telerik:GridViewDataColumn Header="Описание" DataMemberBinding="{Binding Description, Converter={StaticResource RemoveNewLineConverter}}" Width="400"/>
+                </telerik:RadGridView.Columns>
+
+            <telerik:RadGridView.Resources>
+                <Style TargetType="telerik:GridViewRow">
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding IsInactive}" Value="True">
+                            <Setter Property="Foreground" Value="Silver"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </telerik:RadGridView.Resources>
+
+        </telerik:RadGridView>
+
+        </Grid>
+    
+</Page>

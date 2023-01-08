@@ -1,0 +1,43 @@
+﻿<Window x:Class="RepairCardsUI.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:mahapps="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
+        Title="Карты ремонта" Height="800" Width="1000">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="220"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <StackPanel Margin="10 0 0 0">
+            <StackPanel.Resources>
+                <Style TargetType="TextBlock">
+                    <Setter Property="Margin" Value="0 10 0 0"/>
+                </Style>
+            </StackPanel.Resources>
+
+            <TextBlock><Hyperlink x:Name="cardsHyperlink" Click="CardsHyperlink_Click">Карты ремонта</Hyperlink></TextBlock>
+            <TextBlock><Hyperlink x:Name="permissionCardsHyperlink" Click="permissionCardsHyperlink_Click">Разрешения</Hyperlink></TextBlock>
+            <TextBlock><Hyperlink x:Name="operationsHyperlink" Click="OperationsHyperlink_Click">Операции</Hyperlink></TextBlock>
+            <TextBlock><Hyperlink x:Name="executorsHyperlink" Click="ExecutorsHyperlink_Click">Исполнители</Hyperlink></TextBlock>
+            <TextBlock><Hyperlink x:Name="templatesHyperlink" Click="TemplatesHyperlink_Click">Шаблоны</Hyperlink></TextBlock>
+            <TextBlock><Hyperlink x:Name="requestsHyperlink" Click="RequestsHyperlink_Click">Заявки</Hyperlink></TextBlock>
+            <TextBlock><Hyperlink x:Name="exportRequestsHyperlink" Click="exportRequestsHyperlink_Click">Заявки на экспорт</Hyperlink></TextBlock>
+            <TextBlock><Hyperlink x:Name="reportsHyperlink" Click="ReportsHyperlink_Click">Отчеты</Hyperlink></TextBlock>
+            <TextBlock><Hyperlink x:Name="utilitiesHyperlink" Click="utilitiesHyperlink_Click">Дополнительно</Hyperlink></TextBlock>
+            <TextBlock x:Name="unlockedPeriodsTextBlock" Visibility="Collapsed"><Hyperlink x:Name="unlockedPeriodsHyperlink" Click="unlockedPeriodsHyperlink_Click">Открытие периодов</Hyperlink></TextBlock>
+            <TextBlock><Hyperlink x:Name="requestsToCreateStagesIn1CHyperlink" Click="requestsToCreateStagesIn1CHyperlink_Click">Заявки на создание этапов</Hyperlink></TextBlock>
+            <TextBlock><Hyperlink x:Name="helpHyperlink" Click="helpHyperlink_Click">Справка</Hyperlink></TextBlock>
+            <TextBlock x:Name="usersTextBlock" Visibility="Collapsed"><Hyperlink x:Name="usersHyperlink" Click="usersHyperlink_Click">Пользователи</Hyperlink></TextBlock>
+        </StackPanel>
+
+            <Frame Grid.Column="1" x:Name="mainFrame" NavigationUIVisibility="Hidden"/>
+    </Grid>
+
+</Window>

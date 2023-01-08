@@ -1,0 +1,111 @@
+﻿<Window x:Class="RepairCardsUI.OwnProductSelectProductEntriesFromTreeWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+        xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+        xmlns:mahapps="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+        xmlns:infrastructure="clr-namespace:RepairCardsUI.Infrastructure"
+        mc:Ignorable="d"
+        Title="Добавление из состава" Height="610" Width="1000"
+        WindowStartupLocation="CenterScreen">
+
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="2*"/>
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+
+            <telerik:RadGridView Grid.Row="0" 
+                                 x:Name="productsDataGrid"
+                                 ItemsSource="{Binding PagedSource, ElementName=productsRadDataPager}"
+                                 SelectionMode="Single">
+            <telerik:RadGridView.Columns>
+                <telerik:GridViewDataColumn Header="Децимальный номер" DataMemberBinding="{Binding Code}" Width="200"/>
+                <telerik:GridViewDataColumn Header="Наименование" DataMemberBinding="{Binding Name}" Width="500"/>
+                </telerik:RadGridView.Columns>
+            </telerik:RadGridView>
+
+        <telerik:RadDataPager Grid.Row="1" x:Name="productsRadDataPager" PageSize="200"/>
+
+            <!--<TextBox x:Name="filterTextBox" TextChanged="filterTextBox_TextChanged"/>
+
+            <DataGrid Grid.Row="1" x:Name="productsDataGrid" AutoGenerateColumns="False" IsReadOnly="True">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Децимальный номер" Binding="{Binding Code}" Width="200"/>
+                    <DataGridTextColumn Header="Наименование" Binding="{Binding Name}" Width="300"/>
+                </DataGrid.Columns>
+            </DataGrid>-->
+
+            <GridSplitter Grid.Column="1" 
+                          Grid.RowSpan="2" 
+                          Width="8" 
+                          HorizontalAlignment="Center"
+                          VerticalAlignment="Stretch" 
+                          ShowsPreview="False"/>
+
+            <Grid Grid.Column="2" Grid.RowSpan="2">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition/>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+
+                <StackPanel>
+                    <TextBlock>Количество:</TextBlock>
+                    <mahapps:NumericUpDown Value="1" Minimum="1" x:Name="countNumericUpDown"/>
+                    <WrapPanel>
+                        <Button x:Name="openButton" Click="openButton_Click">Рассчитать</Button>
+                    </WrapPanel>
+                </StackPanel>
+
+            <telerik:RadTreeListView Grid.Row="1" 
+                                     x:Name="treeListView" 
+                                     FilteringMode="FilterRow"
+                                     ClipboardCopyMode="Cells"
+                                     SelectionMode="Extended">
+                <telerik:RadTreeListView.Columns>
+     
+                    <telerik:GridViewDataColumn>
+                        <telerik:GridViewDataColumn.CellTemplate>
+                            <DataTemplate>
+                                <CheckBox IsChecked="{Binding IsChecked, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Click="CheckBox_Click"/>
+                            </DataTemplate>
+                        </telerik:GridViewDataColumn.CellTemplate>
+                    </telerik:GridViewDataColumn>
+                    
+                    <telerik:GridViewDataColumn DataMemberBinding="{Binding Code}" Header="Код" Width="250" IsReadOnly="True"/>
+                    <telerik:GridViewDataColumn DataMemberBinding="{Binding Name}" Header="Наименование" Width="200" IsReadOnly="True"/>
+                    <telerik:GridViewDataColumn DataMemberBinding="{Binding Count}" Header="Количество" IsReadOnly="True"/>
+                    <telerik:GridViewDataColumn DataMemberBinding="{Binding CountAll}" Header="Количество всего" IsReadOnly="True"/>
+                    <telerik:GridViewDataColumn DataMemberBinding="{Binding Route}" Header="Маршрут" Width="200" IsReadOnly="True"/>
+                </telerik:RadTreeListView.Columns>
+
+
+                <telerik:RadTreeListView.ChildTableDefinitions>
+                    <telerik:TreeListViewTableDefinition ItemsSource="{Binding Children}"/>
+                </telerik:RadTreeListView.ChildTableDefinitions>
+
+            </telerik:RadTreeListView>
+
+            <!--<TreeView Grid.Row="1" x:Name="treeListView">
+                <TreeView.ItemTemplate>
+                    <HierarchicalDataTemplate ItemsSource="{Binding Children}">
+                        <TextBlock><CheckBox IsChecked="{Binding IsChecked, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Checked="CheckBox_Checked" Unchecked="CheckBox_Unchecked"/><TextBlock Text="{Binding Name}"/></TextBlock>
+                    </HierarchicalDataTemplate>
+                </TreeView.ItemTemplate>
+            </TreeView>-->
+
+            <Button Grid.Row="2" x:Name="addButton" Click="AddButton_Click">Добавить</Button>
+
+            </Grid>
+        </Grid>
+
+</Window>

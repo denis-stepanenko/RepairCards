@@ -1,0 +1,20 @@
+﻿RepairCardsUI
+
+
+winexe
+C#
+.cs
+D:\repair cards\version 2\RepairCards 64\RepairCardsUI\obj\Release\
+RepairCardsUI
+none
+false
+TRACE
+D:\repair cards\version 2\RepairCards 64\RepairCardsUI\App.xaml
+54-695341417
+
+63722243238
+422065842804
+AuthorizationWindow.xaml;NewCardConfirmationWindow.xaml;NewCardDocumentWindow.xaml;CardPurchasedProductWindow.xaml;ChooseMaterialWindow.xaml;ChooseTemplateWindow.xaml;ChooseCardWindow.xaml;CardMaterialWindow.xaml;CardDocumentWindow.xaml;PurchasedProductChooseProductEntriesWindow.xaml;Pages\CardConfirmationsPage.xaml;Pages\CardMaterialsPage.xaml;Pages\CardDocumentsPage.xaml;OwnProductChooseProductEntriesWindow.xaml;PurchasedProductChooseOperationWindow.xaml;OwnProductChooseOperationWindow.xaml;NewTemplateWindow.xaml;FactChooseOperationFromTemplateWindow.xaml;Pages\CardPurchasedProductsPage.xaml;TemplateOperationWindow.xaml;TemplateChooseOperationWindow.xaml;TemplateWindow.xaml;RequestWindow.xaml;Pages\RequestsPage.xaml;Pages\ReportsPage.xaml;PlanChooseOperationFromTemplateWindow.xaml;ChooseOperationFromPlanWindow.xaml;ChooseCardProductWindow.xaml;NewCardWindow.xaml;ChooseOrderWindow.xaml;ChooseProductWindow.xaml;Infrastructure\SelectControl.xaml;OperationWindow.xaml;ExecutorWindow.xaml;MainWindow.xaml;Pages\CardOwnProductsPage.xaml;Pages\CardAgreementsPage.xaml;Pages\CardDetailsPage.xaml;Pages\TemplatesPage.xaml;Pages\OperationsPage.xaml;Pages\ExecutorsPage.xaml;Pages\CardsPage.xaml;CardOwnProductWindow.xaml;PlanChooseOperationWindow.xaml;PlanCardOperationWindow.xaml;FactCardOperationWindow.xaml;CardWindow.xaml;ChooseExecutorWindow.xaml;FactChooseOperationWindow.xaml;Pages\CardPage.xaml;Pages\FactCardOperationsPage.xaml;Pages\PlanCardOperationsPage.xaml;Reports\Pages\CardA4ReportPage.xaml;ReportWindow.xaml;
+
+False
+

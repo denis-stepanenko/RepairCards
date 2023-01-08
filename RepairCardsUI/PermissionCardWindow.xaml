@@ -1,0 +1,180 @@
+﻿<Window x:Class="RepairCardsUI.PermissionCardWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:rdlc="clr-namespace:Microsoft.Reporting.WinForms;assembly=Microsoft.ReportViewer.WinForms"
+        xmlns:local="clr-namespace:RepairCardsUI" xmlns:mahapps="http://metro.mahapps.com/winfx/xaml/controls" xmlns:infrastructure="clr-namespace:RepairCardsUI.Infrastructure"
+        mc:Ignorable="d"
+        Title="Калькуляция к разрешению" Height="800" Width="1000" WindowStartupLocation="CenterScreen" Closing="Window_Closing">
+
+    <Grid>
+        <Grid.Resources>
+            <Style TargetType="TextBlock">
+                <Setter Property="FontSize" Value="14"/>
+            </Style>
+        </Grid.Resources>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <Button x:Name="saveButton" Command="{Binding SaveCommand}">Сохранить</Button>
+
+        <TabControl Grid.Row="1">
+            <TabItem Header="Основное">
+                <StackPanel>
+                    <TextBlock>Номер</TextBlock>
+                    <TextBox Text="{Binding Card.Number, UpdateSourceTrigger=PropertyChanged}"/>
+                    <TextBlock>Дата</TextBlock>
+                    <DatePicker SelectedDate="{Binding Card.Date, UpdateSourceTrigger=PropertyChanged}"/>
+                    <TextBlock>Цех</TextBlock>
+                    <ComboBox ItemsSource="{Binding Departments, UpdateSourceTrigger=PropertyChanged}" SelectedValue="{Binding Card.Department}"/>
+
+                    <TextBlock>Комментарий</TextBlock>
+                    <TextBox Text="{Binding Card.Description, UpdateSourceTrigger=PropertyChanged}"/>
+
+                    <TextBlock>Направление деятельности:</TextBlock>
+                    <TextBlock><Run Text="{Binding Card.Direction}"/>, <Run Text="{Binding Card.Cipher}"/></TextBlock>
+                    <Button x:Name="selectOrderButton" Click="selectOrderButton_Click">Выбрать</Button>
+                    
+                </StackPanel>
+            </TabItem>
+            <TabItem Header="Продукты">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+
+                    <WrapPanel>
+                        <Button x:Name="addButton" Click="addButton_Click">Добавить</Button>
+                        <Button x:Name="removeButton" Click="removeButton_Click">Удалить</Button>
+                    </WrapPanel>
+
+                    <DataGrid Grid.Row="1" x:Name="productsDataGrid" ItemsSource="{Binding Card.Products}" AutoGenerateColumns="False" CanUserDeleteRows="False" CanUserAddRows="False" FontSize="14">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Этап" Binding="{Binding Stage}"/>
+                            <DataGridTextColumn Header="Код" Binding="{Binding Code}" IsReadOnly="True" Width="200"/>
+                            <DataGridTextColumn Header="Наименование" Binding="{Binding Name}" Width="300" IsReadOnly="True"/>
+                            <DataGridTextColumn Header="Количество" Binding="{Binding Count}"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+            </TabItem>
+
+            <TabItem Header="Операции">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+
+                    <WrapPanel>
+                        <Button x:Name="addOperationButton" Click="addOperationButton_Click">Добавить</Button>
+                        <Button x:Name="removeOperationButton" Click="removeOperationButton_Click">Удалить</Button>
+                    </WrapPanel>
+
+                    <DataGrid Grid.Row="1" x:Name="operationsDataGrid" ItemsSource="{Binding Card.Operations}" AutoGenerateColumns="False" CanUserDeleteRows="False" CanUserAddRows="False" FontSize="14">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Цех" Binding="{Binding Department}" IsReadOnly="True"/>
+                            <DataGridTextColumn Header="Код" Binding="{Binding Code}" IsReadOnly="True" Width="100"/>
+                            <DataGridTextColumn Header="Наименование" Binding="{Binding Name}" IsReadOnly="True" Width="300"/>
+                            <DataGridTextColumn Header="Количество" Binding="{Binding Count}"/>
+                            <DataGridTextColumn Header="НЧ" Binding="{Binding Labor}" IsReadOnly="True"/>
+                            <DataGridTextColumn Header="Цена" Binding="{Binding Price}" Width="150" IsReadOnly="True"/>
+                            <DataGridTextColumn Header="Группа" Binding="{Binding GroupName}" IsReadOnly="True"/>
+                            <DataGridTextColumn Header="Ед. измерения" Binding="{Binding UnitName}" IsReadOnly="True"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+            </TabItem>
+
+            <TabItem Header="ПКИ">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+
+                    <WrapPanel>
+                        <Button x:Name="addPurchasedProductButton" Click="addPurchasedProductButton_Click">Добавить</Button>
+                        <Button x:Name="removePurchasedProductButton" Click="removePurchasedProductButton_Click">Удалить</Button>
+                    </WrapPanel>
+
+                    <DataGrid Grid.Row="1" x:Name="purchasedProductsDataGrid" ItemsSource="{Binding Card.PurchasedProducts}" AutoGenerateColumns="False" CanUserDeleteRows="False" CanUserAddRows="False" FontSize="14">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Код" Binding="{Binding Code}" IsReadOnly="True" Width="200"/>
+                            <DataGridTextColumn Header="Наименование" Binding="{Binding Name}" IsReadOnly="True" Width="300"/>
+                            <DataGridTextColumn Header="Количество" Binding="{Binding Count}"/>
+                            <DataGridTextColumn Header="Цена" Binding="{Binding Price}" Width="150"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Материалы">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+
+                    <WrapPanel>
+                        <Button x:Name="addMaterialButton" Click="addMaterialButton_Click">Добавить</Button>
+                        <Button x:Name="removeMaterialButton" Click="removeMaterialButton_Click">Удалить</Button>
+                    </WrapPanel>
+
+                    <DataGrid Grid.Row="1" x:Name="materialsDataGrid" ItemsSource="{Binding Card.Materials}" AutoGenerateColumns="False" CanUserDeleteRows="False" CanUserAddRows="False" FontSize="14">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Цех" Binding="{Binding Department}" IsReadOnly="True"/>
+                            <DataGridTextColumn Header="Код" Binding="{Binding Code}" IsReadOnly="True" Width="200"/>
+                            <DataGridTextColumn Header="Наименование" Binding="{Binding Name}" IsReadOnly="True" Width="300"/>
+                            <DataGridTextColumn Header="Количество" Binding="{Binding Count}"/>
+                            <DataGridTextColumn Header="Цена" Binding="{Binding Price}" Width="150"/>
+                            <DataGridTextColumn Header="Тип" Binding="{Binding Type}" IsReadOnly="True"/>
+                            <DataGridTextColumn Header="Размер" Binding="{Binding Size}" IsReadOnly="True"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Отчет">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+
+                    <StackPanel>
+                        <TextBlock>Гражданская продукция</TextBlock>
+                        <mahapps:NumericUpDown Minimum="0" Value="242.90" HasDecimals="True" x:Name="civilianCHTSNumericUpDown"/>
+                        <TextBlock>Военная продукция</TextBlock>
+                        <mahapps:NumericUpDown Minimum="0" Value="312.36" HasDecimals="True" x:Name="militaryCHTSNumericUpDown"/>
+                        <TextBlock>Коэффициент</TextBlock>
+
+                        <DataGrid x:Name="coefficientsDataGrid" Height="100" AutoGenerateColumns="False" IsReadOnly="True">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="Приказ" Binding="{Binding OrderNumber}" Width="150"/>
+                                <DataGridTextColumn Header="Дата" Binding="{Binding Date, StringFormat={} {0:dd/MM/yyyy}}" Width="150"/>
+                                <DataGridTextColumn Header="4" Binding="{Binding Department4}" Width="50"/>
+                                <DataGridTextColumn Header="5" Binding="{Binding Department5}" Width="50"/>
+                                <DataGridTextColumn Header="6" Binding="{Binding Department6}" Width="50"/>
+                                <DataGridTextColumn Header="13" Binding="{Binding Department13}" Width="50"/>
+                                <DataGridTextColumn Header="17" Binding="{Binding Department17}" Width="50"/>
+                                <DataGridTextColumn Header="80" Binding="{Binding Department80}" Width="50"/>
+                                <DataGridTextColumn Header="82" Binding="{Binding Department82}" Width="50"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </StackPanel>
+
+                    <Button Grid.Row="1" x:Name="showButton" Click="showButton_Click">Показать</Button>
+
+                    <WindowsFormsHost x:Name="windowsFormsHost" Grid.Row="2">
+                        <rdlc:ReportViewer x:Name="reportViewer" ShowRefreshButton="False"/>
+                    </WindowsFormsHost>
+                </Grid>
+
+            </TabItem>
+        </TabControl>
+    </Grid>
+</Window>

@@ -1,0 +1,74 @@
+﻿<mahapps:MetroWindow x:Class="RepairCardsUI.UserWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:mahapps="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+        mc:Ignorable="d"
+        xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+        WindowTransitionsEnabled="False"
+        Title="Пользователь" Height="450" Width="700" 
+        WindowStartupLocation="CenterScreen">
+
+        <Grid VerticalAlignment="Top">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <TextBlock Grid.Row="0">Наименование:</TextBlock>
+            <TextBlock Grid.Row="1">Подразделение:</TextBlock>
+            <!--<TextBox Grid.Row="0" Grid.Column="1" x:Name="nameTextBox" MaxLength="200"/>-->
+
+            <ComboBox x:Name="nameComboBox" 
+                                 Grid.Column="1"
+                                 DisplayMemberPath="Name"
+                                 IsEditable="True"/>
+
+            <mahapps:NumericUpDown Grid.Row="1" 
+                                   Grid.Column="1" 
+                                   Value="1" 
+                                   Minimum="1" 
+                                   x:Name="departmentNumericUpDown"/>
+
+            <TextBlock Grid.Row="2">Роль:</TextBlock>
+            <ComboBox Grid.Row="2" 
+                      Grid.Column="1" 
+                      x:Name="roleComboBox" 
+                      DisplayMemberPath="Name"/>
+
+            <TextBlock Grid.Row="3">Пароль:</TextBlock>
+            <DockPanel Grid.Row="3" 
+                       Grid.Column="1" 
+                       LastChildFill="True">
+                <Button DockPanel.Dock="Right" 
+                        x:Name="generatePwdButton"
+                        Click="generatePwdButton_Click">Получить новый</Button>
+                <TextBox x:Name="passwordTextBox" MaxLength="6"/>
+            </DockPanel>
+
+
+            <Button Grid.Row="4" Grid.ColumnSpan="2" x:Name="printButton" Click="printButton_Click">Печать</Button>
+            <Button Grid.Row="5" Grid.ColumnSpan="2" x:Name="copyPasswordButton" Click="copyPasswordButton_Click">Копировать пароль</Button>
+
+            <Button Grid.Row="6" 
+                    Grid.ColumnSpan="2" 
+                    HorizontalAlignment="Right" 
+                    VerticalAlignment="Top" 
+                    x:Name="acceptButton" 
+                    Click="AcceptButton_Click"
+                    IsDefault="True">ОК</Button>
+        </Grid>
+
+</mahapps:MetroWindow>

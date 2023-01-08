@@ -1,0 +1,42 @@
+﻿<Page x:Class="RepairCardsUI.Pages.CardPurchasedProductsPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:RepairCardsUI.Pages"
+      xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+      xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="AdditionalProductsPage">
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <WrapPanel>
+                <Button x:Name="addButton" Click="AddButton_Click">Добавить</Button>
+                <Button x:Name="addProductEntriesButton" Click="AddProductEntriesButton_Click">Добавить из состава</Button>
+                <Button x:Name="addProductFromAnotherCardButton" Click="addProductFromAnotherCardButton_Click">Добавить из другой карты</Button>
+                <Button x:Name="openButton" Click="OpenButton_Click">Открыть</Button>
+                <Button x:Name="deleteButton" Click="DeleteButton_Click">Удалить</Button>
+                <Button x:Name="refreshButton" Click="RefreshButton_Click">Обновить</Button>
+            </WrapPanel>
+
+            <telerik:RadGridView Grid.Row="1" 
+                                 x:Name="productsRadGridView"
+                                 SearchPanelBackground="Transparent"
+                                 MouseDoubleClick="productsRadGridView_MouseDoubleClick"
+                                 CopyingCellClipboardContent="productsRadGridView_CopyingCellClipboardContent">
+                <telerik:RadGridView.Columns>
+                    <telerik:GridViewDataColumn Header="Код" DataMemberBinding="{Binding Code}" Width="200"/>
+                    <telerik:GridViewDataColumn Header="Наименование" DataMemberBinding="{Binding Name}" Width="300"/>
+                    <telerik:GridViewDataColumn Header="Количество" DataMemberBinding="{Binding Count}" Width="110"/>
+                </telerik:RadGridView.Columns>
+            </telerik:RadGridView>
+
+        </Grid>
+
+</Page>

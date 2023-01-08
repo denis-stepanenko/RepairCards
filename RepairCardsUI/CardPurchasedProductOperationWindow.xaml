@@ -1,0 +1,48 @@
+﻿<Window x:Class="RepairCardsUI.CardPurchasedProductOperationWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:mahapps="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+        xmlns:tel="http://schemas.telerik.com/2008/xaml/presentation"
+        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+        mc:Ignorable="d"
+        Title="Операция" Height="450" Width="500" 
+        WindowStartupLocation="CenterScreen">
+
+        <Grid VerticalAlignment="Top">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <TextBlock Grid.Row="0">Код:</TextBlock>
+            <TextBlock Grid.Row="1">Наименование:</TextBlock>
+            <TextBlock Grid.Row="2">Дата:</TextBlock>
+            <TextBlock Grid.Row="3">Исполнитель:</TextBlock>
+
+                <TextBlock Grid.Row="0" Grid.Column="1" x:Name="codeTextBlock"/>
+            <TextBlock Grid.Row="1" Grid.Column="1" x:Name="nameTextBlock"/>
+
+            <DatePicker Grid.Row="2" Grid.Column="1" x:Name="dateDatePicker"/>
+
+            <tel:RadComboBox Grid.Row="3" 
+                             Grid.Column="1"
+                             x:Name="executorsComboBox" 
+                             DisplayMemberPath="Name" 
+                             IsFilteringEnabled="True"
+                             IsEditable="True"
+                             TextSearchMode="Contains"/>
+
+            <Button Grid.Row="4" Grid.ColumnSpan="2" HorizontalAlignment="Right" VerticalAlignment="Top" x:Name="acceptButton" Click="AcceptButton_Click">ОК</Button>
+        </Grid>
+    
+</Window>
